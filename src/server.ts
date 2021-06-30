@@ -27,7 +27,7 @@ router.get('/rovers/:rover_name/photos/:camera_type', async (req, res) => {
 
     async function getPhotos() {
         try {
-            const response = await axios.default.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=${API_KEY}`);
+            const response = await axios.default.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?sol=1000&camera=${cameraType}&api_key=${API_KEY}`);
             return response.data;
         } catch (error) {
             console.log(error);
