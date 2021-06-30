@@ -1,5 +1,4 @@
-// @ts-ignore
-import express from "express";
+import express = require("express");
 
 const app = express();
 const port = 8000;
