@@ -1,6 +1,5 @@
 import express = require("express");
-import {request} from 'https'
-import { StringDecoder } from 'string_decoder';
+import axios = require("axios");
 
 const app = express();
 const port = 8000;
@@ -10,35 +9,17 @@ app.use(express.json());
 const router = express.Router();
 
 router.get('/test', (req, res) => res.send('Hello world !'));
-router.get('/rovers', (req, res) => {
-    const nasaReq = request(
-        {
-            host: 'api.nasa.gov',
-            path: `/mars-photos/api/v1/rovers?api_key=${API_KEY}`,
-            method: 'GET'
-        },
-        response => {
-            const chunks: Buffer[] = [];
-
-            function onData(chunk: Buffer) {
-                chunks.push(chunk);
-            }
-
-            function onEnd() {
-                const decoder = new StringDecoder('utf8');
-                let message = "";
-                for (const chunk of chunks) {
-                    message += decoder.write(chunk);
-                }
-                res.send(message);
-            }
-
-            response.on('data', onData);
-            response.on('end', onEnd);
+router.get('/rovers', async (req, res) => {
+    async function getRovers() {
+        try {
+            const response = await axios.default.get(`https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=${API_KEY}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
         }
-    )
+    }
 
-    nasaReq.end();
+    res.send(await getRovers());
 });
 
 app.use('/', router);
