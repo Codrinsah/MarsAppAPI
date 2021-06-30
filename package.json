@@ -1,0 +1,31 @@
+{
+  "name": "marsappapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codrinsah/MarsAppAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Codrinsah/MarsAppAPI/issues"
+  },
+  "homepage": "https://github.com/Codrinsah/MarsAppAPI#readme",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.8",
+    "ts-node": "^10.0.0"
+  }
+}
