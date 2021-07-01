@@ -4,8 +4,8 @@ import {API_KEY} from "./server";
 
 export const router = express.Router();
 
-router.get('/test', (req, res) => res.send('Hello world !'));
-router.get('/rovers', async (req, res) => {
+router.get("/test", (req, res) => res.send("Hello world "));
+router.get("/rovers", async (req, res) => {
     async function getRovers() {
         try {
             const response = await axios.default.get(`https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=${API_KEY}`);
@@ -17,7 +17,7 @@ router.get('/rovers', async (req, res) => {
 
     res.send(await getRovers());
 });
-router.get('/rovers/:rover_name/photos/:camera_type', async (req, res) => {
+router.get("/rovers/:rover_name/photos/:camera_type", async (req, res) => {
     const roverName = req.params.rover_name;
     const cameraType = req.params.camera_type;
 
