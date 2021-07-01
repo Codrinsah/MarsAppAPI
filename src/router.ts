@@ -1,6 +1,6 @@
 import express = require("express");
 import axios = require("axios");
-import {API_KEY} from "./server";
+import {API_KEY} from "./config";
 
 export const router = express.Router();
 

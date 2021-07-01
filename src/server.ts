@@ -1,9 +1,7 @@
 import express = require("express");
-import axios = require("axios");
+import { port } from "./config"
 
 const app = express();
-const port = 8000;
-export const API_KEY = "gUd2reuXtHMoniTWhimRu03A25snbsiEOhnygXND"
 
 app.use(express.json());
 import { router } from "./router";
